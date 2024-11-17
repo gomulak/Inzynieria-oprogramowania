@@ -14,8 +14,9 @@ a. Autorzy
 b. Warunki licencyjne do oprogramowania wytworzonego przez grupę
 
 3. Specyfikacja wymagań
+   
 | identyfikator | nazwa | opis | priorytet | kategoria |
-| ----------- | -------------------- | ------------------------------------------------------------------------------------ | ------- | ------------ |
+| ----------- | -------------------- | --------------| ------- | ------------ |
 | `WYM-001` | Wprowadzenie danych | Użytkownik może wprowadzić parametry zwierzęcia, takie jak wiek, waga, płeć, typ rasy. | Wymagane	| Funkcjonalne |
 | `WYM-002`	| Przesyłanie zdjęcia	| Użytkownik może przesłać zdjęcie zwierzęcia, aby aplikacja określiła jego gatunek.	| Wymagane |	Funkcjonalne |
 | `WYM-003`	| Rozpoznawanie gatunku	| Aplikacja rozpoznaje, czy przesłane zdjęcie przedstawia kota, czy psa, przy użyciu sieci neuronowej. |	Wymagane | Funkcjonalne  |
