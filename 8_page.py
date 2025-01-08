@@ -114,6 +114,9 @@ placeholder = st.empty()
 placeholder.markdown(gif_html, unsafe_allow_html = True)
 time.sleep(2)
 placeholder.empty()  # Ukrycie GIF-a
+
+st.write("Dane wejściowe do modelu:", df_dopasowany)
+
 if liczba_dni <= 30:
     st.markdown(
         f"""
