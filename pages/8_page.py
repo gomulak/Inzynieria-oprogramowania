@@ -33,7 +33,7 @@ st.markdown(
 
 
 # Do modelu
-dane = pd.read_csv("dane.csv")
+dane = pd.read_csv("dane.csv", header=0)
 dane = pd.DataFrame(dane)
 (train_set, test_set) = train_test_split(dane, train_size = 0.7, random_state = 13)
 liczba_kolumn = len(dane.columns)
@@ -49,25 +49,16 @@ model = RandomForestRegressor(max_depth = 5, random_state = 13, n_estimators = 5
 model.fit(train_inputs, train_days)
 
 
-# Dane użytkownika
-dane_uzytkownika = {
-    "Gatunek": [st.session_state.get("gatunek", "Nie wybrano")],
-    "Rasa": [st.session_state.get("rasa", "Nie podano")],
-    "Płeć": [st.session_state.get("plec", "Nie wybrano")],
-    "Wiek": [st.session_state.get("wiek_miesiace", 0)],
-    "Waga (kg)": [st.session_state.get("waga_kg", 0)],
-    "Cechy": [st.session_state.get("wybrane_cechy", "Niezidentyfikowany")],
-}
-
-
-df = pd.DataFrame(dane_uzytkownika)
-df['rasa'] = df['Rasa']
-df['gatunek'] = df['Gatunek']
-df['płeć'] = df['Płeć']
+dane_uzytkownika = st.session_state.get("dane_do_modelu", {})
+df = pd.DataFrame([dane_uzytkownika])
 
 
 # Zmiana na małe litery
 df = df.applymap(lambda x: x.lower() if isinstance(x, str) else x)
+
+df["rasa"] = df["rasa"].str.lower().str.strip()
+df["gatunek"] = df["gatunek"].str.lower().str.strip()
+df["płeć"] = df["płeć"].str.lower().str.strip()
 
 
 # Zamiana nazw rasy, żeby działały w modelu
@@ -81,7 +72,7 @@ df.loc[df['rasa'] == 'selkirk rex', 'rasa'] = 'selkirk re'
 
 kategorie = ["przyjazny", "agresywny", "chory", "bojący się", "aktywny"]
 for kategoria in kategorie:
-    df[kategoria] = df["Cechy"].apply(lambda x: 1 if kategoria in x else 0)
+    df[kategoria] = df["cechy"].apply(lambda x: 1 if kategoria in x else 0)
 
 
 kolumny_docelowe = dane.columns
@@ -89,10 +80,35 @@ kolumny_docelowe = dane.columns
 
 df_dopasowany = pd.get_dummies(df, columns = ["rasa", "gatunek", "płeć"])
 df_dopasowany = df.reindex(columns = kolumny_docelowe, fill_value = 0)
-df_dopasowany = df_dopasowany.astype(bool)
 df_dopasowany = df_dopasowany.drop(columns = ["czas_pobytu_dni"], errors = 'ignore')
+df_dopasowany["wiek_miesiące"] = df["wiek_miesiące"]
+df_dopasowany["waga_kg"] = df["waga_kg"]
 
-st.write("Dane wejściowe do modelu:", df_dopasowany)
+
+st.write("Dane pierwotne:", df)
+
+# Mapowanie wartości z kolumny "gatunek" do odpowiedniej kolumny dummy
+if "gatunek" in df.columns:
+    for gatunek_value in df["gatunek"].unique():
+        column_name = f"gatunek_{gatunek_value}"
+        if column_name in df_dopasowany.columns:
+            df_dopasowany[column_name] = (df["gatunek"] == gatunek_value).astype(int)
+
+# Mapowanie wartości z kolumny "płeć" do odpowiedniej kolumny dummy
+if "płeć" in df.columns:
+    for plec_value in df["płeć"].unique():
+        column_name = f"płeć_{plec_value}"
+        if column_name in df_dopasowany.columns:
+            df_dopasowany[column_name] = (df["płeć"] == plec_value).astype(int)
+
+# Mapowanie wartości z kolumny "rasa" do odpowiedniej kolumny dummy
+if "rasa" in df.columns:
+    for rasa_value in df["rasa"].unique():
+        column_name = f"rasa_{rasa_value}"
+        if column_name in df_dopasowany.columns:
+            df_dopasowany[column_name] = (df["rasa"] == rasa_value).astype(int)
+
+st.write("Po zastosowaniu get_dummies/Dane wejściowe do modelu:", df_dopasowany)
 
 liczba_dni = model.predict(df_dopasowany)[0]
 
