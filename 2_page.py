@@ -76,6 +76,7 @@ if "gatunek" in st.session_state:
         st.session_state["rasa"] = None
 
     rasa_wybor = st.selectbox(
+        "",
         options = rasy,
         index = rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
     )
