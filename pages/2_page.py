@@ -91,7 +91,8 @@ if "gatunek" in st.session_state:
     if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
         st.session_state["rasa"] = "dachowiec"
         zapisz_wybor(rasa_wybor)
-
+        
+st.write(f"Wybrana rasa: {st.session_state['rasa']}")
 
 col1, col2, col3 = st.columns((1.5,10,1.3))
 
