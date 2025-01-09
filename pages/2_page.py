@@ -107,6 +107,7 @@ if gatunek == "kot":
 # Debugowanie: Wyświetl stan
 st.write(f"Wybrana rasa: {st.session_state['rasa']}")
 st.write(f"Stan kliknięcia: {st.session_state['kundelek_clicked']}")
+st.write("Debug na stronie 2 - Wybrana rasa:", st.session_state.get("rasa", "Nie ustawiono"))
 
         
 st.write(f"Wybrana rasa: {st.session_state['rasa']}")
