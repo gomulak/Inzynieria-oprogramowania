@@ -59,7 +59,7 @@ Wymagane dokumenty
    
 | identyfikator testu | opis testu | dane testowe | oczekiwany rezultat |
 | ----------- | -------------------- | --------------| ------- |
-| `TEST-001` | Sprawdzenie kalkulacji długości pobytu | Użytkownik może wprowadzić parametry zwierzęcia, takie jak wiek, waga, płeć, typ rasy. | Gatunek: pies, Rasa: Kundelek/nie mam pewności, Płeć: samiec, Wiek: 0 lat 5 miesięcy, Waga: 5kg,	Cechy: przyjazny, aktywny| Model zwraca przewidywaną liczbę dni, np. "57 dni" |
+| `TEST-001` | Sprawdzenie kalkulacji długości pobytu | Użytkownik może wprowadzić parametry zwierzęcia, takie jak wiek, waga, płeć, typ rasy. | Gatunek: pies, Rasa: Kundelek/nie mam pewności, Płeć: samiec, Wiek: 0 lat 5 miesięcy, Waga: 5kg,	Cechy: przyjazny, aktywny| Model zwraca przewidywaną liczbę dni, np. "58 dni" |
 | `TEST-002`	| Wybór rasy w menu	| Gatunek: kot. |	Na następnej stronie zostają wyświetlone rasy kotów |
 | `TEST-003`	| Sprawdzenie poprawności zmian stron (Cofnij/Dalej) | Kliknięcie przycisku `Cofnij/Dalej`.	| Zmiana strony na poprzednią/następną |
 | `TEST-004`	| Sprawdzenie poprawności interfejsu (Rozpocznij)	| Kliknięcie przycisku `Rozpocznij`.	| Przekierowanie do strony z pierwszym pytaniem  |
@@ -73,7 +73,7 @@ Wymagane dokumenty
 
 | identyfikator testu | status | rzeczywisty rezultat | komentarz |
 | ----------- | -------------------- | --------------| ------- |
-| `TEST-001` | PASS | Wynik: "57 dni" | Test zakończony sukcesem |
+| `TEST-001` | PASS | Wynik: "58 dni" | Test zakończony sukcesem |
 | `TEST-002`	| PASS	| Na następnej stronie zostają wyświetlone jedynie rasy kotów |	Test zakończony sukcesem |
 | `TEST-003`	| PASS | Zmiana strony na poprzednią/następną	| Test zakończony sukcesem |
 | `TEST-004`	| PASS	| Przekierowanie do strony z pierwszym pytaniem	| Test zakończony sukcesem |
