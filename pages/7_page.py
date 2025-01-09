@@ -60,8 +60,6 @@ df = pd.DataFrame(dane)
 # Wyświetlenie tabeli
 st.dataframe(df, hide_index = True, use_container_width = True)
 
-st.write("Debug na stronie 7 - Przed zapisem w dane_do_modelu:", st.session_state.get("rasa", "Nie ustawiono"))
-
 
 st.session_state["dane_do_modelu"] = {
     "gatunek": st.session_state.get("gatunek", "Nie wybrano"),
