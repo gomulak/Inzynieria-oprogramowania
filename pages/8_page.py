@@ -85,8 +85,6 @@ df_dopasowany["wiek_miesiące"] = df["wiek_miesiące"]
 df_dopasowany["waga_kg"] = df["waga_kg"]
 
 
-st.write("Dane pierwotne:", df)
-
 # Mapowanie wartości z kolumny "gatunek" do odpowiedniej kolumny dummy
 if "gatunek" in df.columns:
     for gatunek_value in df["gatunek"].unique():
@@ -107,8 +105,6 @@ if "rasa" in df.columns:
         column_name = f"rasa_{rasa_value}"
         if column_name in df_dopasowany.columns:
             df_dopasowany[column_name] = (df["rasa"] == rasa_value).astype(int)
-
-st.write("Po zastosowaniu get_dummies/Dane wejściowe do modelu:", df_dopasowany)
 
 liczba_dni = model.predict(df_dopasowany)[0]
 
