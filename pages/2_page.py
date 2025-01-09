@@ -75,40 +75,22 @@ if "gatunek" in st.session_state:
     if st.session_state["rasa"] not in rasy:
         st.session_state["rasa"] = None
 
-    # Dodaj selectbox dla wyboru rasy
-rasa_wybor = st.selectbox(
-    "",
-    options=rasy,
-    index=rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] in rasy else 0
-)
+    rasa_wybor = st.selectbox(
+        "",
+        options = rasy,
+        index = rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
+    )
+    zapisz_wybor(rasa_wybor)
 
-# Flaga dla kliknięcia przycisku
-if "kundelek_clicked" not in st.session_state:
-    st.session_state["kundelek_clicked"] = False
-
-# Obsługa przycisku "Kundelek/nie mam pewności"
-if gatunek == "pies":
-    if st.button("Kundelek/nie mam pewności"):
+        # Dodatkowy przycisk dla psów
+    if gatunek == "pies" and st.button("Kundelek/nie mam pewności"):
         st.session_state["rasa"] = "kundelek"
-        st.session_state["kundelek_clicked"] = True
-    elif not st.session_state["kundelek_clicked"]:
-        # Ustaw wybór z selectbox tylko, jeśli przycisk nie został kliknięty
-        st.session_state["rasa"] = rasa_wybor
+        zapisz_wybor(rasa_wybor)
 
-# Obsługa przycisku "Dachowiec/nie mam pewności"
-if gatunek == "kot":
-    if st.button("Dachowiec/nie mam pewności"):
+        # Dodatkowy przycisk dla kotów
+    if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
         st.session_state["rasa"] = "dachowiec"
-        st.session_state["kundelek_clicked"] = True
-    elif not st.session_state["kundelek_clicked"]:
-        # Ustaw wybór z selectbox tylko, jeśli przycisk nie został kliknięty
-        st.session_state["rasa"] = rasa_wybor
-
-# Debugowanie: Wyświetl stan
-st.write(f"Wybrana rasa: {st.session_state['rasa']}")
-st.write(f"Stan kliknięcia: {st.session_state['kundelek_clicked']}")
-st.write("Debug na stronie 2 - Wybrana rasa:", st.session_state.get("rasa", "Nie ustawiono"))
-
+        zapisz_wybor(rasa_wybor)
         
 st.write(f"Wybrana rasa: {st.session_state['rasa']}")
 
