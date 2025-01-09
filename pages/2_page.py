@@ -76,20 +76,25 @@ if "gatunek" in st.session_state:
         st.session_state["rasa"] = None
 
     rasa_wybor = st.selectbox(
-        "",
-        options = rasy,
-        index = rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
-    )
-    # Obsługa przycisków dla psów
-    if gatunek == "pies" and st.button("Kundelek/nie mam pewności"):
-        st.session_state["rasa"] = "kundelek"
-    # Obsługa przycisków dla kotów
-    if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
-        st.session_state["rasa"] = "dachowiec"
+    "",
+    options=rasy,
+    index=rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] in rasy else 0
+)
 
-    # Zapisz wybór z selectbox tylko jeśli nie kliknięto przycisków
-    if st.session_state["rasa"] not in ["kundelek", "dachowiec"]:
-        zapisz_wybor(rasa_wybor)
+# Sprawdź, czy któryś z przycisków został kliknięty
+kundelek_clicked = st.button("Kundelek/nie mam pewności") if gatunek == "pies" else False
+dachowiec_clicked = st.button("Dachowiec/nie mam pewności") if gatunek == "kot" else False
+
+# Jeśli kliknięto "Kundelek/nie mam pewności"
+if kundelek_clicked:
+    st.session_state["rasa"] = "kundelek"
+# Jeśli kliknięto "Dachowiec/nie mam pewności"
+elif dachowiec_clicked:
+    st.session_state["rasa"] = "dachowiec"
+# Jeśli użytkownik nie kliknął żadnego przycisku, aktualizuj wybór na podstawie selectbox
+else:
+    st.session_state["rasa"] = rasa_wybor
+
 
 
 col1, col2, col3 = st.columns((1.5,10,1.3))
