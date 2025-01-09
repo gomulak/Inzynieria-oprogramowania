@@ -60,6 +60,14 @@ df = pd.DataFrame(dane)
 # Wyświetlenie tabeli
 st.dataframe(df, hide_index = True, use_container_width = True)
 
+st.session_state["dane_do_modelu"] = {
+    "gatunek": st.session_state.get("gatunek", "Nie wybrano"),
+    "rasa": st.session_state.get("rasa", "Nie podano"),
+    "płeć": st.session_state.get("plec", "Nie wybrano"),
+    "wiek_miesiące": st.session_state.get("wiek", 0),
+    "waga_kg": st.session_state.get("waga", 0),
+    "cechy": st.session_state.get("wybrane_cechy", "Niezidentyfikowany"),
+}
 
 col1, col2, col3 = st.columns(3)
 
