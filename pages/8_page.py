@@ -92,6 +92,7 @@ df_dopasowany = df.reindex(columns = kolumny_docelowe, fill_value = 0)
 df_dopasowany = df_dopasowany.astype(bool)
 df_dopasowany = df_dopasowany.drop(columns = ["czas_pobytu_dni"], errors = 'ignore')
 
+st.write("Dane wejściowe do modelu:", df_dopasowany)
 
 liczba_dni = model.predict(df_dopasowany)[0]
 
