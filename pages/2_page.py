@@ -14,22 +14,18 @@ st.markdown(
         font-size: 300px; 
         font-family: 'Poppins', sans-serif;  
         color: #FFFFFF; 
-        margin-bottom: 1px;  /* Zmniejszamy przerwę między tekstem a selectbox */
+        margin-bottom: 1px;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-
 def zapisz_wybor(wybor):
     st.session_state["rasa"] = wybor
 
-
-# Ustawienie domyślnej wartości rasy, jeśli nie jest ustawiona
 if "rasa" not in st.session_state:
     st.session_state["rasa"] = None
-
 
 st.markdown(
     """
@@ -38,24 +34,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 rasy_psy = ['Akita Inu', 'Amstaff', 'Amstaff/Pitbull', 'Beagle', 'Bernardyn', 'Bokser', 'Border Collie',
             'Buldog Francuski', 'Cairn Terrier', 'Cane Corso', 'Cavalier King Charles Spaniel', 'Chart', 'Chihuahua',
             'Cocker Spaniel', 'Cocker Spaniel Amerykański', 'Cocker Spaniel Angielski', 'Dalmatyńczyk', 'Dog Argentyński',
-            'Dog Niemiecki', 'Doberman Pincher', 'Foksterier', 'Golden Retriever', 'Gończy Polski',
-            'Gryfonik Brukselski', 'Husky', 'Jack Russell Terrier', 'Jamnik', 'Labrador', 'Lhasa Apso', 'Malamut',
-            'Maltańczyk', 'Mix Boston', 'Mix Cairn', 'Mix Doberm', 'Mops', 'Nova Scotia Duck Tolling Retriever',
-            'Owczarek Belgijski', 'Owczarek Kaukaski', 'Owczarek Niemiecki', 'Owczarek Podhalański',
-            'Owczarek Środkowoazjatycki', 'Pekińczyk', 'Pitbul', 'Pinczer', 'Pinczer Miniaturowy', 'Pinczer Średni',
-            'Posokowiec', 'Pudel', 'Rhodesian', 'Rottweiler', 'Samojed', 'Seter Irlandzki', 'Shiba Inu', 'Shih Tzu',
-            'Sznaucer', 'Sznaucer Miniaturowy', 'Sznaucer Olbrzymi', 'Szpic', 'Szpic Niemiecki Miniaturowy', 'Szpic Wild',
-            'Thai Ridge', 'Terier', 'Terier Walijski', 'Toller', 'West Highland White Terrier', 'Wilczak', 'Wyżeł',
-            'Wyżeł Francuski', 'Wyżeł Weimarski', 'Yorkshire Terier']
+            'Dog Niemiecki', 'Doberman Pincher', 'Foksterier', 'Golden Retriever', 'Gończy Polski', 'Gryfonik Brukselski', 
+            'Husky', 'Jack Russell Terrier', 'Jamnik', 'Labrador', 'Lhasa Apso', 'Malamut', 'Maltańczyk', 'Mix Boston', 
+            'Mix Cairn', 'Mix Doberm', 'Mops', 'Nova Scotia Duck Tolling Retriever', 'Owczarek Belgijski', 
+            'Owczarek Kaukaski', 'Owczarek Niemiecki', 'Owczarek Podhalański', 'Owczarek Środkowoazjatycki', 'Pekińczyk', 
+            'Pitbul', 'Pinczer', 'Pinczer Miniaturowy', 'Pinczer Średni', 'Posokowiec', 'Pudel', 'Rhodesian', 'Rottweiler', 
+            'Samojed', 'Seter Irlandzki', 'Shiba Inu', 'Shih Tzu', 'Sznaucer', 'Sznaucer Miniaturowy', 'Sznaucer Olbrzymi', 
+            'Szpic', 'Szpic Niemiecki Miniaturowy', 'Szpic Wild', 'Thai Ridge', 'Terier', 'Terier Walijski', 'Toller', 
+            'West Highland White Terrier', 'Wilczak', 'Wyżeł', 'Wyżeł Francuski', 'Wyżeł Weimarski', 'Yorkshire Terier']
 
 rasy_koty = ['Abisyński', 'Bengalski', 'Brytyjski', 'Chausie', 'Devon Rex', 'Europejska', 'Maine Coon', 'Norweski Leśny',
              'Perski', 'Ragdoll', 'Rosyjski Niebieski', 'Selkirk Rex', 'Sfinks', 'Syberyjski', 'Syjamski', 'Syryjski',
              'Święty Kot Birmański']
-
 
 # Wybór ras w zależności od wybranego gatunku zwierzęcia
 if "gatunek" in st.session_state:
@@ -68,19 +61,22 @@ if "gatunek" in st.session_state:
     else:
         rasy = []
 
-    # Jeżeli rasa została już ustawiona na "kundelek" lub "dachowiec", ustaw ją w session_state
-    if st.session_state["rasa"] in ["kundelek", "dachowiec"]:
-        rasa_wybor = st.session_state["rasa"]
-    else:
-        # Jeżeli rasa jest pusta lub nie jest ustawiona na "kundelek" lub "dachowiec",
-        # pokazujemy listę ras w selectboxie
+    # Sprawdzamy, czy rasa w session_state jest jednym z tych, które zostały wybrane wcześniej
+    if st.session_state["rasa"] in rasy:
         rasa_wybor = st.selectbox(
-            "",
+            "Wybierz rasę:",
             options=rasy,
             index=rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
         )
+    else:
+        # Jeśli rasa została ustawiona na "kundelek" lub "dachowiec", zostaje zachowana
+        rasa_wybor = st.selectbox(
+            "Wybierz rasę:",
+            options=rasy,
+            index=0 if not st.session_state["rasa"] else rasy.index(st.session_state["rasa"])
+        )
 
-    # Zapisujemy wybraną rasę
+    # Zapisz wybór
     zapisz_wybor(rasa_wybor)
 
     # Dodatkowy przycisk dla psów
@@ -92,20 +88,20 @@ if "gatunek" in st.session_state:
     if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
         st.session_state["rasa"] = "dachowiec"
         zapisz_wybor("dachowiec")
-
+        
 st.write(f"Wybrana rasa: {st.session_state['rasa']}")
 
-col1, col2, col3 = st.columns((1.5, 10, 1.3))
+col1, col2, col3 = st.columns((1.5,10,1.3))
 
 with col1:
-    st.markdown('<div style="text-align: center;">', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: center;">', unsafe_allow_html = True)
     if st.button("Cofnij"):
         st.switch_page("pages/1_page.py")
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html = True)
 with col2:
     st.write(" ")
 with col3:
-    st.markdown('<div style="text-align: right;">', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: right;">', unsafe_allow_html = True)
     if st.button("Dalej"):
         st.switch_page("pages/3_page.py")
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html = True)
