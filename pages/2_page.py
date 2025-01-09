@@ -80,16 +80,15 @@ if "gatunek" in st.session_state:
         options = rasy,
         index = rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
     )
-    zapisz_wybor(rasa_wybor)
-
-        # Dodatkowy przycisk dla psów
+    # Obsługa przycisków dla psów
     if gatunek == "pies" and st.button("Kundelek/nie mam pewności"):
         st.session_state["rasa"] = "kundelek"
-        zapisz_wybor(rasa_wybor)
-
-        # Dodatkowy przycisk dla kotów
+    # Obsługa przycisków dla kotów
     if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
         st.session_state["rasa"] = "dachowiec"
+
+    # Zapisz wybór z selectbox tylko jeśli nie kliknięto przycisków
+    if st.session_state["rasa"] not in ["kundelek", "dachowiec"]:
         zapisz_wybor(rasa_wybor)
 
 
