@@ -107,7 +107,7 @@ if st.button("Nie wiem"):
 
 # Tworzenie listy wybranych cech
 st.session_state["wybrane_cechy"] = ", ".join([k for k, v in st.session_state["cechy"].items() if v])
-st.write(["wybrane_cechy"])
+st.write(st.session_state["cechy"])
 
 col1, col2 = st.columns([1, 6])
 
