@@ -54,11 +54,11 @@ rasy_psy = ['Akita Inu', 'Amstaff', 'Amstaff/Pitbull', 'Beagle', 'Bernardyn', 'B
         'Posokowiec', 'Pudel', 'Rhodesian', 'Rottweiler', 'Samojed', 'Seter Irlandzki', 'Shiba Inu', 'Shih Tzu',
         'Sznaucer', 'Sznaucer Miniaturowy', 'Sznaucer Olbrzymi', 'Szpic', 'Szpic Niemiecki Miniaturowy', 'Szpic Wild',
         'Thai Ridge', 'Terier', 'Terier Walijski', 'Toller', 'West Highland White Terrier', 'Wilczak', 'Wyżeł',
-        'Wyżeł Francuski', 'Wyżeł Weimarski', 'Yorkshire Terier', 'Kundelek']
+        'Wyżeł Francuski', 'Wyżeł Weimarski', 'Yorkshire Terier', 'kundelek']
 
 rasy_koty = ['Abisyński', 'Bengalski', 'Brytyjski', 'Chausie', 'Devon Rex', 'Europejska', 'Maine Coon', 'Norweski Leśny',
              'Perski', 'Ragdoll', 'Rosyjski Niebieski', 'Selkirk Rex', 'Sfinks', 'Syberyjski', 'Syjamski', 'Syryjski',
-             'Święty Kot Birmański', 'Dachowiec']
+             'Święty Kot Birmański', 'dachowiec']
 
 
 # Wybór ras w zależności od wybranego gatunku zwierzęcia
@@ -72,8 +72,6 @@ if "gatunek" in st.session_state:
     else:
         rasy = []
 
-    if st.session_state["rasa"] not in rasy:
-        st.session_state["rasa"] = None
 
     rasa_wybor = st.selectbox(
         "",
@@ -82,17 +80,17 @@ if "gatunek" in st.session_state:
     )
     zapisz_wybor(rasa_wybor)
 
+
         # Dodatkowy przycisk dla psów
     if gatunek == "pies" and st.button("Kundelek/nie mam pewności"):
         st.session_state["rasa"] = "kundelek"
-        zapisz_wybor(rasa_wybor)
+        zapisz_wybor("kundelek")
 
         # Dodatkowy przycisk dla kotów
     if gatunek == "kot" and st.button("Dachowiec/nie mam pewności"):
         st.session_state["rasa"] = "dachowiec"
-        zapisz_wybor(rasa_wybor)
-        
-st.write(f"Wybrana rasa: {st.session_state['rasa']}")
+        zapisz_wybor("dachowiec")
+
 
 col1, col2, col3 = st.columns((1.5,10,1.3))
 
