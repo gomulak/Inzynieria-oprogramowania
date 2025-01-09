@@ -80,6 +80,7 @@ if "gatunek" in st.session_state:
             index=rasy.index(st.session_state["rasa"]) if st.session_state["rasa"] else 0
         )
 
+    # Zapisujemy wybraną rasę
     zapisz_wybor(rasa_wybor)
 
     # Dodatkowy przycisk dla psów
