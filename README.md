@@ -6,12 +6,12 @@ Adres aplikacji: https://inzynieria-oprogramowania-kalkulator-dni.streamlit.app
 ## Wymagana dokumentacja
 
 Wymagane dokumenty
-1. Charakterystyka oprogramowania \
-   Nazwa skrócona: Kalkulator dni \
-   Nazwa pełna: Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku \
-   Krótki opis ze wskazaniem celów: Celem aplikacji "Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku" jest wspieranie schronisk w lepszym zarządzaniu zasobami oraz poprawie opieki       nad zwierzętami poprzez analizę kluczowych danych i przewidywanie czasu adopcji. Dzięki temu narzędziu schroniska mogą lepiej planować fundusze schroniska, skracać czas oczekiwania na nowe domy oraz         zwiększać szanse zwierząt na adopcję.
+1. Charakterystyka oprogramowania <br> <br>
+   Nazwa skrócona: ***Kalkulator dni*** <br> <br>
+   Nazwa pełna: Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku <br> <br>
+   Krótki opis ze wskazaniem celów: <br> Celem aplikacji *Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku* jest wspieranie schronisk w lepszym zarządzaniu zasobami oraz poprawie opieki       nad zwierzętami poprzez analizę kluczowych danych i przewidywanie czasu adopcji. Dzięki temu narzędziu schroniska mogą lepiej planować fundusze schroniska, skracać czas oczekiwania na nowe domy oraz         zwiększać szanse zwierząt na adopcję.
 
-3. Prawa autorskie \
+3. Prawa autorskie <br> <br>
    Autorki: Aleksandra Gomulak, Nikola Jędrzejczyk \
    Licencja: GNU GENERAL PUBLIC LICENSE, Version 2
 
