@@ -5,17 +5,16 @@ Adres aplikacji: https://inzynieria-oprogramowania-kalkulator-dni.streamlit.app
 
 ## Wymagana dokumentacja
 
-Wymagane dokumenty
-1. Charakterystyka oprogramowania <br> <br>
+### Charakterystyka oprogramowania 
    Nazwa skrócona: ***Kalkulator dni*** <br> <br>
    Nazwa pełna: Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku <br> <br>
-   Krótki opis ze wskazaniem celów: <br> Celem aplikacji *Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku* jest wspieranie schronisk w lepszym zarządzaniu zasobami oraz poprawie opieki       nad zwierzętami poprzez analizę kluczowych danych i przewidywanie czasu adopcji. Dzięki temu narzędziu schroniska mogą lepiej planować fundusze schroniska, skracać czas oczekiwania na nowe domy oraz         zwiększać szanse zwierząt na adopcję.
+   Krótki opis ze wskazaniem celów: <br> <br> Celem aplikacji *Kalkulator Przewidywania Długości Pobytu Zwierząt Domowych w Schronisku* jest wspieranie schronisk w lepszym zarządzaniu zasobami oraz poprawie opieki       nad zwierzętami poprzez analizę kluczowych danych i przewidywanie czasu adopcji. Dzięki temu narzędziu schroniska mogą lepiej planować fundusze schroniska, skracać czas oczekiwania na nowe domy oraz         zwiększać szanse zwierząt na adopcję.
 
-3. Prawa autorskie <br> <br>
+### Prawa autorskie
    Autorki: Aleksandra Gomulak, Nikola Jędrzejczyk \
    Licencja: GNU GENERAL PUBLIC LICENSE, Version 2
 
-4. Specyfikacja wymagań
+### Specyfikacja wymagań
    
 | identyfikator | nazwa | opis | priorytet | kategoria |
 | ----------- | -------------------- | --------------| ------- | ------------ |
@@ -28,7 +27,7 @@ Wymagane dokumenty
 | `WYM-007` |	Instrukcja użytkowania |	Aplikacja dostarcza instrukcje użytkowania. |	Przydatne |	Funkcjonalne |
 | `WYM-008` |	WebScraping |	Aplikacja automatycznie pobiera zdefiniowane dane ze strony internetowej.	| Wymagane	| Funkcjonalne |
 
-5. Architektura systemu/oprogramowania
+### Architektura systemu/oprogramowania
    Architektura rozwoju
 
 | nazwa | przeznaczenie | wersja |
@@ -54,7 +53,7 @@ Wymagane dokumenty
 | `Streamlit Cloud`	| Hosting i uruchamianie aplikacji	| 1.41.0 |
 | `Przeglądarka`	| Dostęp do interfejsu użytkownika | Dowolna |
 
-7. Testy
+### Testy
    Scenariusze testów
    
 | identyfikator testu | opis testu | dane testowe | oczekiwany rezultat |
